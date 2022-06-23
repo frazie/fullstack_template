@@ -24,7 +24,7 @@ MongoClient.connect(dbConnectionString)
 // middleware
 
 app.set('view engine', 'ejs')
-app.use(express.static('Public'))
+app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(cors())
