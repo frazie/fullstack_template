@@ -2,6 +2,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const { dirname } = require('path')
 const MongoClient = require('mongodb').MongoClient
 require('dotenv').config()
 const PORT = process.env.PORT
@@ -31,6 +32,15 @@ app.use(cors())
 
 
 // end of middleware
+
+app.get('/', async (req,res)=>{
+    try {
+        res.render('index.ejs')
+    } catch (error) {
+        res.status(500).send({message: error.message})
+    }
+    
+})
 
 app.listen(process.env.PORT || PORT, () =>{
     console.log(`server running on port = ${PORT}`)
