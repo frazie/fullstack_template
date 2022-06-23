@@ -21,6 +21,17 @@ MongoClient.connect(dbConnectionString)
         collection = db.collection('movies')
     })
 
+// middleware
+
+app.set('view engine', 'ejs')
+app.use(express.static('Public'))
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
+app.use(cors())
+
+
+// end of middleware
+
 app.listen(process.env.PORT || PORT, () =>{
     console.log(`server running on port = ${PORT}`)
 })
